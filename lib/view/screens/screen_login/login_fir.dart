@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Text(
                   'LogIn ',
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Text(
                   'Welcome Back!',
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 18,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -95,10 +95,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                         .then((result) {
                       if (result == null) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        // Display success message in SnackBar
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Login successful!')),
                         );
+
+                        // Navigate to HomeScreen after a short delay to show SnackBar
+                        Future.delayed(Duration(seconds: 1), () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
+                          );
+                        });
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(result)),

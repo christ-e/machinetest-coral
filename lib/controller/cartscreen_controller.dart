@@ -84,27 +84,34 @@ class CartScreenController extends GetxController {
       useRootNavigator: false,
       context: context,
       builder: (BuildContext context) {
+        // Delay for 3 seconds before navigating to HomeScreen
         Future.delayed(const Duration(seconds: 3), () {
+          // Clear the cart
+          cartModelList.clear(); // Clear the cart items
+          totalPrice.value = 0; // Reset total price
+
+          // Navigate to HomeScreen
           Navigator.pushAndRemoveUntil(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation, secondaryAnimation) =>
-                    HomeScreen(),
-                transitionsBuilder:
-                    (context, animation, secondaryAnimation, child) {
-                  return SlideTransition(
-                    position: Tween<Offset>(
-                      begin: const Offset(0.0, 1.0),
-                      end: Offset.zero,
-                    ).animate(animation),
-                    child: FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    ),
-                  );
-                },
-              ),
-              (route) => false);
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  HomeScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(0.0, 1.0),
+                    end: Offset.zero,
+                  ).animate(animation),
+                  child: FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  ),
+                );
+              },
+            ),
+            (route) => false,
+          );
         });
 
         return AlertDialog(
@@ -123,35 +130,6 @@ class CartScreenController extends GetxController {
               ),
             ],
           ),
-          actions: [
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) =>
-                          HomeScreen(),
-                      transitionsBuilder:
-                          (context, animation, secondaryAnimation, child) {
-                        return SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0.0, 1.0),
-                            end: Offset.zero,
-                          ).animate(animation),
-                          child: FadeTransition(
-                            opacity: animation,
-                            child: child,
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                },
-                child: Container(),
-              ),
-            ),
-          ],
         );
       },
     );
