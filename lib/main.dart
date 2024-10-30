@@ -11,30 +11,21 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-      apiKey: "AIzaSyB72b4fFPaPHbqijCPzc4Eo58HD8etkbJ4",
-      projectId: "stellar-display-398208",
-      appId: '1:792857541724:android:448991ff3571f9ce9cfa99',
-      messagingSenderId: '',
+      apiKey: 'AIzaSyBshh6-Zgt0A9EMNMNWciH4m8-R7KySIas',
+      appId: '1:662756288481:android:37293def81e6c1e2cc14a0',
+      messagingSenderId: '662756288481',
+      projectId: 'estore-f2430',
+      storageBucket: 'estore-f2430.appspot.com',
     ),
   );
+
   await Hive.initFlutter();
   Hive.registerAdapter(CartItemAdapter());
   await Hive.openBox<CartItem>('cartBox');
   // runApp(const MyApp());
   User? user = FirebaseAuth.instance.currentUser;
-  runApp(MaterialApp(
-    home: user == null ? LoginScreen() : HomeScreen(),
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: user == null ? const LoginScreen() : HomeScreen(),
   ));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-    );
-  }
 }

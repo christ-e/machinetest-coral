@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "662756288481",
+    "project_id": "estore-f2430",
+    "storage_bucket": "estore-f2430.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662756288481:android:16b73ca3d099b249cc14a0",
+        "android_client_info": {
+          "package_name": "com.example.cart_coral_machinetest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBshh6-Zgt0A9EMNMNWciH4m8-R7KySIas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
