@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final fakeStoreApiModel = fakeStoreApiModelFromJson(jsonString);
-
 import 'dart:convert';
 
 FakeStoreApiModel fakeStoreApiModelFromJson(String str) =>

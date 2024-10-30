@@ -95,12 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                         .then((result) {
                       if (result == null) {
-                        // Display success message in SnackBar
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Login successful!')),
                         );
 
-                        // Navigate to HomeScreen after a short delay to show SnackBar
                         Future.delayed(Duration(seconds: 1), () {
                           Navigator.push(
                             context,

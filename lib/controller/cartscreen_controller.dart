@@ -84,13 +84,9 @@ class CartScreenController extends GetxController {
       useRootNavigator: false,
       context: context,
       builder: (BuildContext context) {
-        // Delay for 3 seconds before navigating to HomeScreen
         Future.delayed(const Duration(seconds: 3), () {
-          // Clear the cart
-          cartModelList.clear(); // Clear the cart items
-          totalPrice.value = 0; // Reset total price
-
-          // Navigate to HomeScreen
+          cartModelList.clear();
+          totalPrice.value = 0;
           Navigator.pushAndRemoveUntil(
             context,
             PageRouteBuilder(
